@@ -7,13 +7,13 @@ warnings.filterwarnings("ignore", message="FP16 is not supported on CPU")
 warnings.filterwarnings("ignore", category=UserWarning, module="whisper")
 warnings.filterwarnings("ignore", category=FutureWarning, module="torch")
 
-# base_audio_path = "extracted_audio.wav"
-base_audio_path = r"Media\base_audio.wav"
+base_audio_path = r"Media\extracted_audio.wav"
+# base_audio_path = r"Media\base_audio.wav"
 censor_audio_path = r"Media\overlay_audio.wav"
 output_audio_path = r"Media\output_audio.wav"
 model_name = 'small'
-# to_censor = ["kill", "killed", "fuck", "fucking", "killing"]
-to_censor=['happier','happy','mourning','mind','thinking']
+to_censor = ["kill", "killed", "fuck", "fucking", "killing"]
+# to_censor=['happier','happy','mourning','mind','thinking']
 
 censor_audio(
     base_audio_path=base_audio_path,
