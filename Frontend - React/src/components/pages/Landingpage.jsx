@@ -184,7 +184,7 @@ const LandingPage = () => {
           Upload an audio file to see our AI in action and experience the power
           of real-time curse word censorship.
         </p>
-        <Button className="text-lg px-8 py-4 rounded-full transition-transform duration-300 hover:scale-105 hover:bg-blue-700">
+        <Button to='/censor' className="text-lg px-8 py-4 rounded-full transition-transform duration-300 hover:scale-105 hover:bg-blue-700">
           Try Now
         </Button>
       </section>
