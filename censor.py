@@ -1,4 +1,5 @@
 import whisper
+import torch
 from pydub import AudioSegment
 
 class Word:
@@ -17,7 +18,7 @@ class Word:
 
 def timestamp_list(base_audio_path, model_name="base"):
     
-    model = whisper.load_model(model_name)
+    model = whisper.load_model(model_name,device="cuda" if torch.cuda.is_available() else "cpu")
 
     result = model.transcribe(base_audio_path, word_timestamps=True, language="en")
     print(result['text'],'\n')

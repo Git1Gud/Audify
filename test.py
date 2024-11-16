@@ -1,11 +1,17 @@
 from censor import censor_audio
 import warnings
+import torch
 
-warnings.filterwarnings("ignore", category=FutureWarning)
-warnings.filterwarnings("ignore", category=UserWarning)
-warnings.filterwarnings("ignore", message="FP16 is not supported on CPU")
-warnings.filterwarnings("ignore", category=UserWarning, module="whisper")
-warnings.filterwarnings("ignore", category=FutureWarning, module="torch")
+# warnings.filterwarnings("ignore", category=FutureWarning)
+# warnings.filterwarnings("ignore", category=UserWarning)
+# warnings.filterwarnings("ignore", message="FP16 is not supported on CPU")
+# warnings.filterwarnings("ignore", category=UserWarning, module="whisper")
+# warnings.filterwarnings("ignore", category=FutureWarning, module="torch")
+
+print(torch.cuda.is_available())  # Should return True
+if torch.cuda.is_available():
+    print(torch.cuda.get_device_name(0))  # Prints GPU name
+
 
 base_audio_path = r"Media\extracted_audio.wav"
 # base_audio_path = r"Media\base_audio.wav"
