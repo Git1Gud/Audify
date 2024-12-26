@@ -5,6 +5,7 @@ from censor import censor_audio
 from pydub import AudioSegment
 import os 
 from moviepy.editor import VideoFileClip, AudioFileClip
+import time
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -12,7 +13,6 @@ warnings.filterwarnings("ignore", message="FP16 is not supported on CPU")
 warnings.filterwarnings("ignore", category=UserWarning, module="whisper")
 warnings.filterwarnings("ignore", category=FutureWarning, module="torch")
 
-print(torch.cuda.is_available())
 if torch.cuda.is_available():
     print(torch.cuda.get_device_name(0))  
 
@@ -64,7 +64,7 @@ def upload_audio():
 def censor_get():
     if not base_audio_path:
         return jsonify({"error": "Base audio file not found. Please upload first."}), 404
-
+    start_time=time.time()
     censor_audio(
         base_audio_path=base_audio_path,
         censor_audio_path=censor_audio_path,
@@ -75,7 +75,8 @@ def censor_get():
         gain_of_base=-100,
         silent=False
     )
-    print('Censoring done')
+    end_time=time.time()
+    print('Censoring done in ',end_time-start_time)
     return send_file(output_audio_path, mimetype='audio/wav')
 
 

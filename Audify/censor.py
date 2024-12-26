@@ -21,7 +21,7 @@ def timestamp_list(base_audio_path, model_name="base"):
     model = whisper.load_model(model_name,device="cuda" if torch.cuda.is_available() else "cpu")
 
     result = model.transcribe(base_audio_path, word_timestamps=True, language="en")
-    print(result['text'],'\n')
+    # print(result['text'],'\n')
 
     list_of_Words = []
     for segment in result['segments']:
@@ -54,7 +54,7 @@ def censor_audio(base_audio_path, censor_audio_path, output_audio_path, model_na
             word = word.lower()
             for item in time_list:
                 if item[0] == word:
-                    print(f'Censoring {item[0]} from {item[1]} to {item[2]} seconds')
+                    # print(f'Censoring {item[0]} from {item[1]} to {item[2]} seconds')
                     result.append((item[1] * 1000, item[2] * 1000))  
         return result
 
@@ -83,7 +83,7 @@ def censor_audio(base_audio_path, censor_audio_path, output_audio_path, model_na
             base_audio = base_audio[:start_time] + censor_segment + base_audio[end_time:]
 
     base_audio.export(output_audio_path, format="wav")
-    print(f"Censored audio saved to {output_audio_path}")
+    # print(f"Censored audio saved to {output_audio_path}")
     return output_audio_path
 
     
