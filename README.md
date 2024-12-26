@@ -16,7 +16,7 @@ python -m venv .venv
 
 ## activate it
 ```
-.\.venv\Scripts/activate
+.\.venv\Scripts\activate
 ```
 
 ## install dependencies
