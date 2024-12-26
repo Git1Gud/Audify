@@ -67,7 +67,7 @@ def censor_audio(base_audio_path, censor_audio_path, output_audio_path, model_na
         censor_audio = censor_audio + gain_of_censor
 
     for start_time, end_time in censor_times:
-        end_time+=100
+        end_time+=250
         duration = end_time - start_time 
         censor_segment = censor_audio[:duration] 
 
